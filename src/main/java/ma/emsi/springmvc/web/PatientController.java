@@ -15,6 +15,7 @@ import java.util.List;
 
 @Controller
 public class PatientController {
+    //commentaire
     @Autowired
     PatientRepository patientRepository;
     @GetMapping(path = "/index")
