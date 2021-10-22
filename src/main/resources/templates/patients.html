@@ -3,6 +3,7 @@
 <html
         xmlns:th="http://www.thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:sec="https://www.thymleaf.org/thymleaf.extras.springsecurity5"
 layout:decorator="template1">
 <head>
     <meta charset="UTF-8">
@@ -36,8 +37,8 @@ layout:decorator="template1">
                         <td th:text="${p.score}"></td>
                         <td th:text="${p.dateNaissance}"></td>
                         <td th:text="${p.malade}"></td>
-                        <td><a onclick="return confirm('Etes vous sure de vouloir supprimer?')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id},keyword=${keyword},page=${currentPage},size=${size})}">Delete</a><td>
-                        <td>
+                        <td sec:authorize="hasRole('admin')"><a onclick="return confirm('Etes vous sure de vouloir supprimer?')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id},keyword=${keyword},page=${currentPage},size=${size})}">Delete</a><td>
+                        <td sec:authorize="hasRole('admin')">
                         <a th:href="@{editPatient(id=${p.id})}" class="btn btn-success">Edit</a>
                     </td>
                     </tr>
